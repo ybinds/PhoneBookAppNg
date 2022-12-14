@@ -1,0 +1,32 @@
+<div class="container mt-3 border">
+    <h2 class="bg bg-secondary text-white text-center">Contact Information Form</h2>
+    <form #contactForm="ngForm" (ngSubmit)="createContact(contactForm)" novalidate>
+        <div class="form-group mb-3 mt-3">
+            <label for="contactName">Contact Name:</label>
+            <input type="text" class="form-control" id="contactName" placeholder="Enter Contact Name" name="contactName" #name #contactName="ngModel" [(ngModel)]="contactInfo.name" minlength="3" maxlength="100" required (focus)="setSubmitted()">
+            <div class="alert alert-danger" *ngIf="!submitted && contactName.invalid && (contactName.dirty || contactName.touched)">
+                <small *ngIf="contactName.errors?.['required']">Name cannot be left blank</small>
+                <small *ngIf="contactName.errors?.['minlength']">Name should be minimum 3 characters</small>
+            </div>
+        </div>
+        <div class="form-group mb-3 mt-3">
+            <label for="contactEmail">Contact Email:</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="Enter Contact Email" name="contactEmail" #contactEmail="ngModel"  [(ngModel)]="contactInfo.email" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required (focus)="setSubmitted()">
+            <div class="alert alert-danger" *ngIf="!submitted && contactEmail.errors && (contactEmail.dirty || contactEmail.touched)">
+                <small *ngIf="contactEmail.errors?.['required']">Email cannot be left blank</small>
+                <small *ngIf="contactEmail.errors?.['pattern']">Invalid Email Format</small>
+            </div>
+        </div>
+        <div class="form-group mb-3 mt-3">
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" class="form-control" id="contactNumber" placeholder="Enter Contact Number" name="contactNumber" #contactPhone="ngModel" [(ngModel)]="contactInfo.phoneNumber" pattern="[0-9]{10}" minlength="10" maxlength="10" required (focus)="setSubmitted()">
+            <div class="alert alert-danger" *ngIf="!submitted && contactPhone.errors && (contactPhone.dirty || contactPhone.touched)">
+                <small *ngIf="contactPhone.errors?.['required']">Contact Number cannot be left blank</small>
+                <small *ngIf="contactPhone.errors?.['pattern']">Contact Number should be 10 numbers (no alphabets or special characters allowed)</small>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-secondary" [class.disabled]="!contactForm.valid">Submit</button>
+    </form>
+    <div class="container mt-3 text-center text-success">{{msg}}</div>
+    <div class="container mt-3 text-center"><a routerLink="/contacts">View All Contacts</a></div>
+  </div>

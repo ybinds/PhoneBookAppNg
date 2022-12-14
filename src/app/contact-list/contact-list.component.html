@@ -1,0 +1,26 @@
+<div class="container mt-3">
+    <h2 class="bg bg-dark text-white text-center">All Contacts</h2>
+    <a routerLink="/">+Add New Contact</a>
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr class="bg bg-secondary text-white">
+          <th>S.No.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phno</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of contacts">
+          <td>{{c.id}}</td>
+          <td>{{c.name}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.phoneNumber}}</td>
+          <td><button type="button" class="btn btn-warning" (click)="getContact(c.id)">Edit</button> &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-danger" (click)="deleteContact(c.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bg bg-light text-success" *ngIf="msg">{{msg}}</div>
+    <div class="bg bg-light text-danger" *ngIf="errorMsg">{{errorMsg}}</div>
+  </div>
