@@ -7,16 +7,10 @@ import { Contact } from '../contact';
   providedIn: 'root',
 })
 export class ContactService {
-  baseUrl="http://localhost:9090/v1/api/contact";
+  baseUrl="http://localhost:9090/v1/api";
   message: string = '';
 
   constructor(private _http: HttpClient) { }
-
-  createContact(contact:Contact): Observable<any> {
-    return this._http.post(
-      `${this.baseUrl}/`, contact, {responseType: 'text'}
-    );
-  }
 
   setMessage(msg: string) {
     this.message = msg;
@@ -26,8 +20,17 @@ export class ContactService {
     return this.message;
   }
   
+  createContact(contact:Contact): Observable<any> {
+    return this._http.post(
+      `${this.baseUrl}/contact`, contact, {responseType: 'text'}
+    );
+  }
   getContactList(): Observable<Contact[]> {
     return this._http.get<Contact[]>(`${this.baseUrl}/contacts`, {responseType: 'json'});
+  }
+
+  getContactListBySearch(word:any): Observable<Contact[]> {
+    return this._http.get<Contact[]>(`${this.baseUrl}/search/${word}`, {responseType: 'json'});
   }
 
   getContactInfo(id: number): Observable<Contact>{

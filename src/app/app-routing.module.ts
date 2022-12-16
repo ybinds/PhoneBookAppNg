@@ -6,9 +6,11 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 
 const routes: Routes = [
   { path: 'contacts', component: ContactListComponent},
+  { path: 'contacts/:word', component: ContactListComponent},
+  { path: 'add-contact', component: ContactInfoComponent},
   { path: 'contact/:id', component: ContactEditComponent},
-  { path: '', component: ContactInfoComponent},
-  { path: '**', component: ContactInfoComponent}
+  { path: '', component: ContactListComponent},
+  { path: '**', component: ContactListComponent}
 ];
 
 @NgModule({

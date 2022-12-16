@@ -1,1 +1,30 @@
+<div class="p-3 bg-secondary text-white text-center">
+    <h1>Phone Book Application</h1>
+  </div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" disabled>PhoneBookApp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contacts" routerLinkActive="active">Contact List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/add-contact" routerLinkActive="active">Add Contact</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" name="word" [(ngModel)]="word" placeholder="Search">
+          <button class="btn btn-secondary" type="button" (click)="submitSearch()">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 <router-outlet></router-outlet>
+
+<div class="mt-5 p-4 bg-secondary text-white text-center">
+    <p>@2022 Hima. All rights reserved.</p>
+  </div>
