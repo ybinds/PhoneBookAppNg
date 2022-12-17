@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Depoloyment
+metadata:
+  name: phonebookapp-ng-deploy
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: phonebookapp-ng
+  template:
+    metadata:
+      name: phonebookapp-ng-pod
+      labels:
+        app: phonebookapp-ng
+    spec:
+      containers:
+        - name: phonebookapp-ng-container
+          image: ybinds/phonebookapp-ng
+          ports:
+            - containerPort: 4200
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phonebookapp-ng-svc
+spec:
+  type: NodePort
+  selector:
+    app: phonebookapp-ng
+  ports:
+    - port: 80
+      targetPort: 4200
+      nodePort: 30001
+...
