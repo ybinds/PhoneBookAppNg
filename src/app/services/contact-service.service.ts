@@ -7,7 +7,7 @@ import { Contact } from '../contact';
   providedIn: 'root',
 })
 export class ContactService {
-  baseUrl="http://localhost:9090/v1/api";
+  baseUrl="http://3.145.46.152:30002/v1/api";
   message: string = '';
 
   constructor(private _http: HttpClient) { }
