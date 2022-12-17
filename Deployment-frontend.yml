@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: Depoloyment
+kind: Deployment
 metadata:
   name: phonebookapp-ng-deploy
 spec:
