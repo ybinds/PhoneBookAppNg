@@ -20,7 +20,7 @@ spec:
         - name: phonebookapp-ng-container
           image: ybinds/phonebookapp-ng
           ports:
-            - containerPort: 4200
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -32,6 +32,6 @@ spec:
     app: phonebookapp-ng
   ports:
     - port: 80
-      targetPort: 4200
+      targetPort: 80
       nodePort: 30001
 ...
